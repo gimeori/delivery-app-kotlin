@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    viewBinding { enable=true
+    }
+
     namespace = "com.example.deliveryapp"
     compileSdk = 34
 
@@ -33,6 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
