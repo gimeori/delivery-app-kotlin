@@ -83,32 +83,58 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сумма заказа"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_items" />
+
+    <TextView
+        android:id="@+id/order_details_totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="сумма заказа"
+        android:textColor="@color/startColor"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Статус заказа"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_items" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_totalPrice" />
 
     <TextView
         android:id="@+id/order_details_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="новый"
         android:textColor="@color/startColor"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/appCompatButton"
         android:layout_width="250dp"
         android:layout_height="70dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/btn_orange_90"
         android:elevation="4dp"
         android:outlineSpotShadowColor="@color/startColor"
@@ -117,7 +143,6 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

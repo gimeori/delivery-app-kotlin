@@ -1,10 +1,12 @@
 package com.example.deliveryapp.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deliveryapp.Models.ActiveOrderModel
+import com.example.deliveryapp.OrderActivity
 import com.example.deliveryapp.databinding.OrderItemBinding
 
 class ActiveOrderAdapter(
@@ -26,6 +28,14 @@ class ActiveOrderAdapter(
         holder.orderTotalPrice.text=listModel.getOrderTotalPrice()
         holder.orderStatus.text=listModel.getOrderStatus()
 
+        holder.item.setOnClickListener{
+            val intent= Intent(context,OrderActivity::class.java)
+            intent.putExtra("orderId",listModel.getOrderId())
+            intent.putExtra("orderStatus",listModel.getOrderStatus())
+            intent.putExtra("orderTotalPrice",listModel.getOrderTotalPrice())
+            context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -35,6 +45,9 @@ class ActiveOrderAdapter(
         val orderId=binding.activeOrdersId
         val orderTotalPrice=binding.activeOrdersTotal
         val orderStatus=binding.activeOrdersStatus
+
+        val item=binding.root
+
 
     }
 }
