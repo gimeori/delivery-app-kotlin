@@ -81,7 +81,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_bg"
-        android:drawableLeft="@drawable/ic_mail"
+        android:drawableLeft="@drawable/ic_phone_24px"
         android:drawablePadding="15dp"
         android:elevation="2dp"
         android:inputType="phone|number"

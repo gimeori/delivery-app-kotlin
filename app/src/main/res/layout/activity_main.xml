@@ -24,7 +24,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
-            android:text="Активные заказы"
+            android:text="Список заказов"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
