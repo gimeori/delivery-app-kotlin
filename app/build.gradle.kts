@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.deliveryapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -53,4 +53,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     // testing navigation
     androidTestImplementation("androidx.navigation:navigation-testing:2.8.3")
+    implementation("com.yandex.android:maps.mobile:4.8.1-full")
 }

@@ -44,6 +44,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.yandex.mapkit.ApiKey"
+            android:value="d00f0dd9-f999-4556-9da4-9086f95dbc06" />
     </application>
 
 </manifest>
