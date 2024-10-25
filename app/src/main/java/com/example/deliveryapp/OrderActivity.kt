@@ -14,12 +14,11 @@ class OrderActivity : AppCompatActivity() {
     private lateinit var mapView: MapView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MapKitFactory.setApiKey("d00f0dd9-f999-4556-9da4-9086f95dbc06")
         MapKitFactory.initialize(this)
         binding=ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mapView = binding.map
-        mapView.map.move(CameraPosition(Point(53.346048, 83.732656),11.0f,0.0f,0.0f), Animation(Animation.Type.SMOOTH, 300f), null)
+        mapView.map.move(CameraPosition(Point(53.347349, 83.774803),15.0f,0.0f,0.0f), Animation(Animation.Type.SMOOTH, 10f), null)
         val orderId=intent.getIntExtra("orderId",0)
         val orderTotalPrice=intent.getStringExtra("orderTotalPrice")
         val orderStatus=intent.getStringExtra("orderStatus")
