@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.CreateUserFragment">
 
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Добавление нового курьера"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/create_user_name"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/ic_user"
+        android:drawablePadding="15dp"
+        android:elevation="2dp"
+        android:inputType="text"
+        android:hint="Имя"
+        android:paddingLeft="8dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <EditText
+        android:id="@+id/create_user_phone"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/ic_phone_24px"
+        android:drawablePadding="15dp"
+        android:elevation="2dp"
+        android:inputType="phone|number"
+        android:hint="Номер телефона"
+        android:paddingLeft="8dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_user_name" />
+
+    <EditText
+        android:id="@+id/create_user_password"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/ic_lock"
+        android:drawablePadding="15dp"
+        android:elevation="2dp"
+        android:inputType="textPassword"
+        android:outlineSpotShadowColor="@color/startColor"
+        android:hint="Пароль"
+        android:paddingLeft="8dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_user_phone" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/profile_btn_edit"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Создать"
+        android:textColor="@color/startColor"
+        android:shadowColor="@color/endColor"
+        android:outlineSpotShadowColor="@color/endColor"
+        android:outlineAmbientShadowColor="@color/endColor"
+        android:shadowDy="@integer/material_motion_duration_long_2"
+        android:elevation="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
