@@ -54,6 +54,5 @@ dependencies {
     // testing navigation
     androidTestImplementation("androidx.navigation:navigation-testing:2.8.3")
     implementation("com.yandex.android:maps.mobile:4.8.1-full")
-    implementation("com.google.android.gms:play-services-location:21.0.1")
 
 }

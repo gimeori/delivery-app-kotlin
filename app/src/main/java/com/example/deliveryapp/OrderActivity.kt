@@ -9,6 +9,7 @@ import com.example.deliveryapp.databinding.ActivityOrderBinding
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
@@ -33,25 +34,6 @@ class OrderActivity : AppCompatActivity() {
         userLocationLayer.isVisible = true
         userLocationLayer.isHeadingEnabled = true
 
-        userLocationLayer.setObjectListener(object : UserLocationObjectListener {
-            override fun onObjectAdded(userLocationView: UserLocationView) {
-                userLocationLayer.cameraPosition()?.target?.let { userLocation ->
-                    mapView.map.move(
-                        CameraPosition(userLocation, 12.0f, 0.0f, 0.0f),
-                        Animation(Animation.Type.SMOOTH, 5f),
-                        null
-                    )
-                }
-            }
-
-            override fun onObjectRemoved(view: UserLocationView) {
-            }
-
-            override fun onObjectUpdated(view: UserLocationView, event: ObjectEvent) {
-            }
-        })
-
-
         val orderId=intent.getIntExtra("orderId",0)
         val orderTotalPrice=intent.getStringExtra("orderTotalPrice")
         val orderStatus=intent.getStringExtra("orderStatus")
@@ -66,6 +48,15 @@ class OrderActivity : AppCompatActivity() {
             binding.orderDetailsStatus.text="отправлен"
             binding.takeOrder.text="завершить заказ"
         }
+    }
+
+
+    private fun moveCameraToPoint(point: Point) {
+        mapView.map.move(
+            CameraPosition(point, 15.0f, 0.0f, 0.0f),
+            Animation(Animation.Type.SMOOTH, 1f),
+            null
+        )
     }
 
     private fun requestLocationPermission() {

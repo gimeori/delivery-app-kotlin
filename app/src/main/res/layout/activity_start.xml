@@ -58,16 +58,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/sign_in_phone"
+        android:id="@+id/sign_in_mail"
         android:layout_width="330dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/edit_text_bg"
-        android:drawableLeft="@drawable/ic_phone_24px"
+        android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="15dp"
         android:elevation="2dp"
-        android:inputType="phone|number"
-        android:hint="Номер телефона"
+        android:inputType="textEmailAddress"
+        android:hint="Почта"
         android:paddingLeft="8dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_mail" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
