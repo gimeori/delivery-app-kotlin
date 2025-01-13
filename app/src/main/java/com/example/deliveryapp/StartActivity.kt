@@ -2,6 +2,7 @@ package com.example.deliveryapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -22,10 +23,11 @@ class StartActivity : AppCompatActivity() {
             val intent= Intent(this@StartActivity, SignUpActivity :: class.java)
             startActivity(intent)
         }
-        binding.button3.setOnClickListener{
-            val intent=Intent(this@StartActivity, MainActivity :: class.java)
-            startActivity(intent)
-            finish()
-        }
+//        binding.button3.setOnClickListener{
+//            Log.d("com.example.deliveryapp.LoginActivity", "Кнопка нажата")
+//            val intent=Intent(this@StartActivity, MainActivity :: class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }

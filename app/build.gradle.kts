@@ -54,5 +54,9 @@ dependencies {
     // testing navigation
     androidTestImplementation("androidx.navigation:navigation-testing:2.8.3")
     implementation("com.yandex.android:maps.mobile:4.8.1-full")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
 
 }
