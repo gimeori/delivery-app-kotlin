@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_fragment"
+    app:startDestination="@id/active_orders">
+
+    <fragment
+        android:id="@+id/active_orders"
+        android:name="com.example.deliveryapp.fragments.ActiveOrdersFragment"
+        android:label="fragment_active_orders"
+        tools:layout="@layout/fragment_active_orders" />
+    <fragment
+        android:id="@+id/create_user"
+        android:name="com.example.deliveryapp.fragments.CreateUserFragment"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/finish_orders"
+        android:name="com.example.deliveryapp.fragments.FinishOrdersFragment"
+        android:label="fragment_finish_orders"
+        tools:layout="@layout/fragment_finish_orders" />
+    <fragment
+        android:id="@+id/process_orders"
+        android:name="com.example.deliveryapp.fragments.ProcessOrdersFragment"
+        android:label="fragment_process_orders"
+        tools:layout="@layout/fragment_process_orders" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.deliveryapp.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
