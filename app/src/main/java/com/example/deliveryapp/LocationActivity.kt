@@ -3,6 +3,7 @@ package com.example.deliveryapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -15,19 +16,29 @@ import com.example.deliveryapp.databinding.ActivityLocationBinding
 class LocationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLocationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityLocationBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+
+        binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         val cityList= arrayOf("Барнаул", "Новосибирск", "Красноярск", "Москва","Томск")
         val adapter=ArrayAdapter(this@LocationActivity,android.R.layout.simple_list_item_1, cityList)
         binding.locationList.setAdapter(adapter)
-        binding.locationList.setOnItemClickListener { parent, view, position, l ->
+        binding.locationList.setOnItemClickListener { parent, _, position, _ ->
             val selectLocation=parent.getItemAtPosition(position) as String
             showDialogAtPosition(selectLocation)
         }
     }
+
     @SuppressLint("MissingInflatedId")
     fun showDialogAtPosition(location: String){
         val dialogView = layoutInflater.inflate(R.layout.alert_dialog,null)
@@ -48,5 +59,13 @@ class LocationActivity : AppCompatActivity() {
         intent.putExtra("location",location)
         startActivity(intent)
         finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
     }
 }

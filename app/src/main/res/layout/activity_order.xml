@@ -31,7 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-50dp"
-        android:text="Заказ №2"
+        android:text=""
+        tools:text="Заказ №0"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -40,135 +41,137 @@
         app:layout_constraintStart_toEndOf="@+id/back_active_orders"
         app:layout_constraintTop_toTopOf="@+id/back_active_orders" />
 
-    <TextView
-        android:id="@+id/textView11"
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:text="Информация о покупателе"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_id" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/order_details_phone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="45454545"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-    <TextView
-        android:id="@+id/order_details_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="николай"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/order_details_phone"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_phone" />
-    <TextView
-        android:id="@+id/order_details_address"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="г. Барнаул, ул. Пушкина, 32"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/order_details_name"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_name" />
-
-
-    <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/order_details_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Состав заказа"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/order_details_address"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_address" />
-
-    <TextView
-        android:id="@+id/order_details_items"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Сырная 1 шт 25 см Тонкое тесто \nМясная 1 шт 25 см Тонкое тесто"
+        android:layout_marginStart="24dp"
+        android:text=""
+        tools:text="Дата: 00.00.00 00:00"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сумма заказа"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_items" />
-
-    <TextView
-        android:id="@+id/order_details_totalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="сумма заказа"
-        android:textColor="@color/startColor"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Статус заказа"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_totalPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/order_details_id"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/order_details_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="новый"
-        android:textColor="@color/startColor"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:text=""
+        tools:text="Статус"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_date"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/order_details_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        android:layout_marginStart="24dp"
+        android:text=""
+        tools:text="0 ₽"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_status"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/order_details_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text=""
+        tools:text="Адрес: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_total_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/order_details_user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text=""
+        tools:text="Заказчик: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/order_details_user_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text=""
+        tools:text="Телефон: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/pizzas_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:text=""
+        tools:text="Состав заказа:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/order_details_user_phone"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/pizza_items_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/pizzas_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/takeOrder"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_status" />
+        app:layout_constraintTop_toBottomOf="@+id/pizza_items_container" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/takeOrder"
@@ -176,26 +179,29 @@
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btn_orange_90"
         android:elevation="4dp"
         android:outlineSpotShadowColor="@color/startColor"
         android:shadowColor="@color/startColor"
-        android:text="Взять в работу"
+        android:text=""
+        tools:text="Взять в работу"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
 
     <TextView
         android:id="@+id/created_at_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
-        android:text="25.01.2025 18:01"
+        android:text=""
+        tools:text="00.00.0000 00:00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/order_details_id" />

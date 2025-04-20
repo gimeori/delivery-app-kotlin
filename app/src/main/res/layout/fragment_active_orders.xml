@@ -33,6 +33,19 @@
         app:layout_constraintTop_toTopOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageButton
+        android:id="@+id/refresh_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Обновить заказы"
+        android:src="@android:drawable/ic_popup_sync"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+        app:tint="@color/black" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/active_orders_rv"
         android:layout_width="match_parent"
