@@ -158,7 +158,7 @@ public class LoginRepository(private val context: Context) {
         .build()
 
     private val api = Retrofit.Builder()
-        .baseUrl("https://fastapi-pizza-delivery-2hoq.onrender.com/")
+        .baseUrl("https://fastapi-pizzatime-delivery.onrender.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
