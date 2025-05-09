@@ -5,22 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.deliveryapp.databinding.ActivityMainBinding
-import com.example.deliveryapp.fragments.ActiveOrdersFragment
-import com.example.deliveryapp.fragments.CreateUserFragment
-import com.example.deliveryapp.fragments.FinishOrdersFragment
-import com.example.deliveryapp.fragments.ProcessOrdersFragment
-import com.example.deliveryapp.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

@@ -95,6 +95,18 @@ interface ApiService {
         @Path("id") orderId: Int,
         @Body statusUpdate: OrderStatusUpdateRequest
     ): retrofit2.Response<Unit>
+
+    @GET("orders/courier/stats")
+    suspend fun getCourierStats(): com.example.deliveryapp.Models.CourierStatsModel
+
+    @GET("auth/me")
+    suspend fun getUserProfile(): com.example.deliveryapp.Models.UserProfileModel
+    
+    @PATCH("auth/me")
+    suspend fun updateUserProfileMe(@Body userUpdate: UserUpdateRequest): com.example.deliveryapp.Models.UserProfileModel
+
+    @GET("orders/delivered")
+    suspend fun getDeliveredOrders(): List<com.example.deliveryapp.Models.DeliveredOrderModel>
 }
 
 
@@ -402,6 +414,129 @@ public class LoginRepository(private val context: Context) {
             Log.e(TAG, "updateOrderStatus: Ошибка при обновлении статуса заказа ID=$orderId. Unauthorized: $isUnauthorized", e)
             if (isUnauthorized) {
                 Log.w(TAG, "updateOrderStatus: Ошибка авторизации 401. Очистка токена.")
+                tokenManager.clearToken()
+            }
+            throw e
+        }
+    }
+
+    // Добавляю метод для получения статистики курьера
+    suspend fun getCourierStats(): com.example.deliveryapp.Models.CourierStatsModel {
+        Log.d(TAG, "getCourierStats: Запрос на получение статистики курьера")
+        val token = tokenManager.getToken()
+        if (token == null || token.isBlank()) {
+            Log.e(TAG, "getCourierStats: Попытка запроса статистики без валидного токена.")
+            tokenManager.clearToken()
+            throw IllegalStateException("Необходимо авторизоваться перед запросом статистики (токен отсутствует или невалиден)")
+        }
+        Log.d(TAG, "getCourierStats: Токен найден, отправка запроса...")
+        
+        try {
+            val stats = api.getCourierStats()
+            Log.d(TAG, "getCourierStats: Получена статистика: доставлено сегодня=${stats.ordersDeliveredToday}, всего=${stats.ordersDeliveredAllTime}")
+            return stats
+        } catch (e: Exception) {
+            val isUnauthorized = e is HttpException && e.code() == 401
+            Log.e(TAG, "getCourierStats: Ошибка при получении статистики. Unauthorized: $isUnauthorized", e)
+            
+            if (isUnauthorized) {
+                Log.w(TAG, "getCourierStats: Ошибка авторизации 401. Токен недействителен или истек. Очистка токена.")
+                tokenManager.clearToken()
+            }
+            throw e
+        }
+    }
+
+    // Получение данных текущего пользователя
+    suspend fun getUserProfile(): com.example.deliveryapp.Models.UserProfileModel {
+        Log.d(TAG, "getUserProfile: Запрос на получение профиля пользователя")
+        val token = tokenManager.getToken()
+        if (token == null || token.isBlank()) {
+            Log.e(TAG, "getUserProfile: Попытка запроса профиля без валидного токена.")
+            tokenManager.clearToken()
+            throw IllegalStateException("Необходимо авторизоваться для получения профиля")
+        }
+        Log.d(TAG, "getUserProfile: Токен найден, отправка запроса...")
+        
+        try {
+            val profile = api.getUserProfile()
+            Log.d(TAG, "getUserProfile: Получены данные пользователя: ID=${profile.id}, Email=${profile.email}")
+            return profile
+        } catch (e: Exception) {
+            val isUnauthorized = e is HttpException && e.code() == 401
+            Log.e(TAG, "getUserProfile: Ошибка при получении профиля. Unauthorized: $isUnauthorized", e)
+            
+            if (isUnauthorized) {
+                Log.w(TAG, "getUserProfile: Ошибка авторизации 401. Токен недействителен или истек. Очистка токена.")
+                tokenManager.clearToken()
+            }
+            throw e
+        }
+    }
+    
+    // Обновление данных текущего пользователя (без указания ID)
+    suspend fun updateUserProfileMe(updateRequest: UserUpdateRequest): com.example.deliveryapp.Models.UserProfileModel {
+        Log.d(TAG, "updateUserProfileMe: Запрос на обновление профиля текущего пользователя")
+        val token = tokenManager.getToken()
+        if (token == null || token.isBlank()) {
+            Log.e(TAG, "updateUserProfileMe: Попытка обновления профиля без валидного токена.")
+            tokenManager.clearToken()
+            throw IllegalStateException("Необходимо авторизоваться для обновления профиля")
+        }
+        Log.d(TAG, "updateUserProfileMe: Токен найден, отправка PATCH запроса...")
+        
+        try {
+            val response = api.updateUserProfileMe(updateRequest)
+            Log.d(TAG, "updateUserProfileMe: Профиль успешно обновлен. Email: ${response.email}")
+            
+            if (updateRequest.name != null && updateRequest.name != tokenManager.getUsername()) {
+                tokenManager.saveUsername(updateRequest.name)
+                Log.d(TAG, "updateUserProfileMe: Сохранено новое имя пользователя: ${updateRequest.name}")
+            }
+            
+            return response
+        } catch (e: Exception) {
+            val isUnauthorized = e is HttpException && e.code() == 401
+            Log.e(TAG, "updateUserProfileMe: Ошибка при обновлении профиля. Unauthorized: $isUnauthorized", e)
+            if (isUnauthorized) {
+                Log.w(TAG, "updateUserProfileMe: Ошибка авторизации 401. Очистка токена.")
+                tokenManager.clearToken()
+            }
+            throw e
+        }
+    }
+
+    // Метод для получения списка выполненных заказов
+    suspend fun getDeliveredOrders(): List<com.example.deliveryapp.Models.DeliveredOrderModel> {
+        Log.d(TAG, "getDeliveredOrders: Запрос на получение выполненных заказов")
+        val token = tokenManager.getToken()
+        if (token == null || token.isBlank()) {
+            Log.e(TAG, "getDeliveredOrders: Попытка запроса заказов без валидного токена.")
+            tokenManager.clearToken()
+            throw IllegalStateException("Необходимо авторизоваться перед запросом заказов (токен отсутствует или невалиден)")
+        }
+        Log.d(TAG, "getDeliveredOrders: Токен найден, отправка запроса...")
+        
+        try {
+            val orders = api.getDeliveredOrders()
+            Log.d(TAG, "getDeliveredOrders: Получено ${orders.size} выполненных заказов.")
+            if (orders.isEmpty()) {
+                Log.w(TAG, "getDeliveredOrders: Получен пустой список выполненных заказов от сервера.")
+            } else {
+                orders.take(5).forEachIndexed { index, order ->
+                    Log.d(TAG, "getDeliveredOrders: Заказ $index: ID=${order.id}, Сумма=${order.totalPrice}, Адрес=${order.address}")
+                }
+                if (orders.size > 5) {
+                    Log.d(TAG, "getDeliveredOrders: ... и еще ${orders.size - 5} заказов.")
+                }
+            }
+            return orders
+        } catch (e: Exception) {
+            val isUnauthorized = e is HttpException && e.code() == 401
+            Log.e(TAG, "getDeliveredOrders: Ошибка при получении списка заказов. Unauthorized: $isUnauthorized", e)
+            
+            if (isUnauthorized) {
+                Log.w(TAG, "getDeliveredOrders: Ошибка авторизации 401. Токен недействителен или истек. Очистка токена.")
                 tokenManager.clearToken()
             }
             throw e
